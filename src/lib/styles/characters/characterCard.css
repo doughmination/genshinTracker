@@ -13,8 +13,10 @@
 	outline: 2px solid transparent;
 	outline-offset: 2px;
 
+	/* Keeps the name dark on the plate, the global link hover would turn it white */
 	&:hover,
 	&:focus-visible {
+		color: var(--slate);
 		outline-color: var(--gold);
 	}
 

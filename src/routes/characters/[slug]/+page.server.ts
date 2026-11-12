@@ -5,7 +5,7 @@
 import { error } from '@sveltejs/kit';
 
 import { getCharacter, getRoster } from '#lib/api/roster.js';
-import { findBySlug } from '#lib/scripts/roster.js';
+import { findBySlug, unpickedTwinMessage } from '#lib/scripts/roster.js';
 
 import type { PageServerLoad } from './$types';
 
@@ -15,7 +15,10 @@ export const load: PageServerLoad = async ({ fetch, params }) => {
 	const rosterCharacter = findBySlug(roster, params.slug);
 
 	if (!rosterCharacter) {
-		error(404, 'Character not found');
+		const twinMessage = unpickedTwinMessage(roster, params.slug);
+
+		// 418 for the Traveler twin this account did not pick, 404 for anything else
+		error(twinMessage ? 418 : 404, twinMessage ?? 'Character not found');
 	}
 
 	return { character: await getCharacter(fetch, rosterCharacter.id) };

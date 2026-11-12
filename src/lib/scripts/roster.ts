@@ -33,8 +33,16 @@ export function findBySlug(roster: Roster, slug: string): RosterCharacter | unde
 
 // The game gives you one of each pair, never both
 const eitherOrPairs = [
-	// Aether, Lumine
-	['10000005', '10000007']
+	[
+		{
+			id: '10000005',
+			name: 'Aether'
+		},
+		{
+			id: '10000007',
+			name: 'Lumine'
+		}
+	]
 ];
 
 // Drops the twin you did not pick, and fixes the total to match
@@ -45,9 +53,9 @@ export function withoutUnpickedTwins(roster: Roster): Roster {
 
 	const unpickedIds = new Set<string>();
 
-	for (const [firstId, secondId] of eitherOrPairs) {
-		if (ownedIds.has(firstId) && !ownedIds.has(secondId)) unpickedIds.add(secondId);
-		if (ownedIds.has(secondId) && !ownedIds.has(firstId)) unpickedIds.add(firstId);
+	for (const [first, second] of eitherOrPairs) {
+		if (ownedIds.has(first.id) && !ownedIds.has(second.id)) unpickedIds.add(second.id);
+		if (ownedIds.has(second.id) && !ownedIds.has(first.id)) unpickedIds.add(first.id);
 	}
 
 	const characters = roster.characters.filter((character) => !unpickedIds.has(character.id));
@@ -57,4 +65,24 @@ export function withoutUnpickedTwins(roster: Roster): Roster {
 		characters,
 		total_count: characters.length
 	};
+}
+
+// For a URL that names the twin this account did not pick. Takes the roster after withoutUnpickedTwins.
+export function unpickedTwinMessage(roster: Roster, slug: string): string | null {
+	const rosterIds = new Set(roster.characters.map((character) => character.id));
+
+	for (const [first, second] of eitherOrPairs) {
+		for (const [asked, picked] of [
+			[first, second],
+			[second, first]
+		]) {
+			const askedIsMissing = characterSlug(asked.name) === slug && !rosterIds.has(asked.id);
+
+			if (askedIsMissing && rosterIds.has(picked.id)) {
+				return `${asked.name} is not enabled as you do not unlock both travellers, and the account uses ${picked.name}`;
+			}
+		}
+	}
+
+	return null;
 }
