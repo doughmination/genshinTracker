@@ -1,0 +1,35 @@
+/* src/lib/styles/ui/elementIcon.css
+ * MIT — (c) Doughmination System®
+ */
+
+/* Symbol on a dark disc, so it reads on any background */
+.elementIcon {
+	display: inline-grid;
+	flex: none;
+	place-items: center;
+	width: var(--iconSize, 1.5rem);
+	height: var(--iconSize, 1.5rem);
+	border-radius: 50%;
+	background: rgb(20 22 30 / 0.72);
+
+	img {
+		width: 78%;
+		height: 78%;
+		object-fit: contain;
+	}
+
+	/* Thin outlines vanish when small: fill the disc and thicken the lines */
+	img.lineArt {
+		width: 100%;
+		height: 100%;
+		filter: drop-shadow(0 0 0.5px #fff) drop-shadow(0 0 0.5px #fff) brightness(1.5);
+	}
+
+	/* Stand-in when a character has no symbol */
+	.diamond {
+		width: 36%;
+		height: 36%;
+		background: var(--accent);
+		transform: rotate(45deg);
+	}
+}

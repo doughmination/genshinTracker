@@ -1,0 +1,62 @@
+/* src/lib/styles/theme.css
+ * MIT — (c) Doughmination System®
+ */
+
+:root {
+	--bg: #0b0a0d;
+	--raised: rgb(255 255 255 / 3.5%);
+	--line: rgb(255 255 255 / 9%);
+	--text: #ece9ef;
+	--muted: #a49eab;
+	--gold: #d3bc8e;
+
+	/* Gold until a character's element takes over */
+	--accent: var(--gold);
+	--accent-dim: color-mix(in srgb, var(--accent) 14%, transparent);
+
+	/* Parchment plates from the game's menus, with slate text on top */
+	--parchment: #ece5d8;
+	--parchment-shade: #d9d0bd;
+	--slate: #495366;
+	--positive: #a8d67a;
+	--set-green: #5b8a3a;
+
+	--rarity-five: linear-gradient(180deg, #6f4a2f, #b9792f 60%, #e0a44c);
+	--rarity-four: linear-gradient(180deg, #55507f, #8d6cb0 60%, #b48fd3);
+	--rarity-three: linear-gradient(180deg, #4b6584, #4f88ad 60%, #62a8c9);
+	--rarity-low: linear-gradient(180deg, #5c5f68, #7d7f85);
+
+	color-scheme: dark;
+	font-family: 'IBM Plex Sans', system-ui, sans-serif;
+	background: var(--bg);
+	color: var(--text);
+}
+
+/* Element themes, for anything with a data-element attribute. Colours match static/elements. */
+
+[data-element] {
+	--accent: var(--element, var(--gold));
+	--accent-dim: color-mix(in srgb, var(--accent) 14%, transparent);
+}
+
+[data-element='Pyro'] {
+	--element: #ef7938;
+}
+[data-element='Hydro'] {
+	--element: #4cc2f1;
+}
+[data-element='Anemo'] {
+	--element: #74c2a8;
+}
+[data-element='Electro'] {
+	--element: #af8ec1;
+}
+[data-element='Dendro'] {
+	--element: #a5c83b;
+}
+[data-element='Cryo'] {
+	--element: #9fd6e3;
+}
+[data-element='Geo'] {
+	--element: #fab632;
+}

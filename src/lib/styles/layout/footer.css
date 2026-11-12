@@ -1,0 +1,36 @@
+/* src/lib/styles/layout/footer.css
+ * MIT — (c) Doughmination System®
+ */
+
+/* Sits in the page flow; margin-top: auto pins it to the bottom of short pages */
+.siteFooter {
+	margin-top: auto;
+	padding-block: 1.25rem;
+	border-top: 1px solid var(--line);
+	color: var(--muted);
+	font-size: 0.85rem;
+
+	.footerLine {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.25rem 0.75rem;
+		align-items: center;
+	}
+
+	/* Dot between items, skipped on the first */
+	.footerLine > span + span::before {
+		content: '·';
+		margin-right: 0.75rem;
+	}
+}
+
+@media (max-width: 40rem) {
+	.siteFooter .footerLine {
+		flex-direction: column;
+		text-align: center;
+	}
+
+	.siteFooter .footerLine > span + span::before {
+		content: none;
+	}
+}

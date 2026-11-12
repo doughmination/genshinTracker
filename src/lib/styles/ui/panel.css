@@ -1,0 +1,11 @@
+/* src/lib/styles/ui/panel.css
+ * MIT — (c) Doughmination System®
+ */
+
+.panel {
+	min-width: 0;
+
+	.label {
+		margin-bottom: 0.9rem;
+	}
+}

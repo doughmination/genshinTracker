@@ -1,0 +1,42 @@
+/* src/lib/styles/pages/home.css
+ * MIT — (c) Doughmination System®
+ */
+
+.homeHero {
+	padding-block: 2rem 2.5rem;
+
+	/* Account figures, one card each */
+	.ledger {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+		gap: 0.75rem;
+		margin: 2rem 0 0;
+	}
+
+	dd {
+		margin: 0.15rem 0 0;
+		font-size: 2rem;
+		font-weight: 700;
+		letter-spacing: -0.02em;
+		line-height: 1.2;
+	}
+
+	small {
+		color: var(--muted);
+		font-size: 1rem;
+		font-weight: 400;
+		letter-spacing: 0;
+	}
+}
+
+.homeFeatured {
+	> h2 {
+		margin-bottom: 1rem;
+		font-size: 1.25rem;
+		font-weight: 600;
+	}
+
+	.moreLink {
+		margin-top: 1.25rem;
+	}
+}

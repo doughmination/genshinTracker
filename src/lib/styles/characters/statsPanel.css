@@ -1,0 +1,42 @@
+/* src/lib/styles/characters/statsPanel.css
+ * MIT — (c) Doughmination System®
+ */
+
+.statsPanel {
+	margin: 0;
+
+	.row {
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: 1rem;
+		padding: 0.5rem 0;
+		border-bottom: 1px solid var(--line);
+	}
+
+	.row:last-child {
+		padding-bottom: 0;
+		border-bottom: 0;
+	}
+
+	dt {
+		color: var(--muted);
+	}
+
+	dd {
+		margin: 0;
+		font-weight: 500;
+		font-variant-numeric: tabular-nums;
+	}
+
+	.split {
+		margin-right: 0.75rem;
+		color: var(--muted);
+		font-size: 0.8rem;
+		font-weight: 400;
+	}
+
+	.added {
+		color: var(--positive);
+	}
+}

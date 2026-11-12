@@ -1,0 +1,33 @@
+/* src/lib/styles/viewer/modelPrompt.css
+ * MIT — (c) Doughmination System®
+ */
+
+/* Sits at the foot of the stage, over the artwork */
+.modelPrompt {
+	position: absolute;
+	right: 0.75rem;
+	bottom: 0.75rem;
+	left: 0.75rem;
+	padding: 1rem 1.25rem;
+	border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+	border-radius: 1rem;
+	background: var(--bg);
+	box-shadow: 0 0 0 4px var(--accent-dim);
+
+	.question {
+		margin-top: 0.25rem;
+		font-weight: 600;
+	}
+
+	.advice {
+		color: var(--muted);
+		font-size: 0.85rem;
+	}
+
+	.actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin-top: 0.75rem;
+	}
+}

@@ -1,0 +1,100 @@
+/* src/lib/styles/ui/itemCard.css
+ * MIT — (c) Doughmination System®
+ */
+
+/* Weapon and artifact cards: rarity band on top, parchment body below */
+.itemCard {
+	overflow: hidden;
+	border-radius: 0.6rem;
+	background: var(--parchment);
+	color: var(--slate);
+
+	.band {
+		position: relative;
+		min-height: 6.5rem;
+		padding: 0.625rem 5.5rem 0.625rem 0.875rem;
+		background: var(--rarity-low);
+		color: #fff;
+	}
+
+	&[data-rarity='3'] .band {
+		background: var(--rarity-three);
+	}
+
+	&[data-rarity='4'] .band {
+		background: var(--rarity-four);
+	}
+
+	&[data-rarity='5'] .band {
+		background: var(--rarity-five);
+	}
+
+	p {
+		margin: 0;
+	}
+
+	.itemName {
+		font-weight: 700;
+	}
+
+	.mainName {
+		margin-top: 0.375rem;
+		font-size: 0.8125rem;
+		opacity: 0.8;
+	}
+
+	.mainValue {
+		font-size: 1.625rem;
+		font-variant-numeric: tabular-nums;
+		line-height: 1.1;
+	}
+
+	.bandIcon {
+		position: absolute;
+		right: 0.25rem;
+		bottom: 0;
+		width: 5.25rem;
+		height: 5.25rem;
+		object-fit: contain;
+	}
+
+	.body {
+		padding: 0.625rem 0.875rem 0.75rem;
+	}
+
+	.levelTag {
+		display: inline-block;
+		padding: 0 0.5rem;
+		border-radius: 4px;
+		background: var(--slate);
+		color: var(--parchment);
+		font-size: 0.8125rem;
+		font-variant-numeric: tabular-nums;
+	}
+
+	.subStats {
+		margin: 0.5rem 0 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.subStats li {
+		display: flex;
+		justify-content: space-between;
+		gap: 0.5rem;
+		font-size: 0.875rem;
+		font-variant-numeric: tabular-nums;
+	}
+
+	.subStats li span:first-child::before {
+		content: '· ';
+	}
+
+	.footnote {
+		margin-top: 0.5rem;
+		padding-top: 0.375rem;
+		border-top: 1px solid var(--parchment-shade);
+		color: var(--set-green);
+		font-size: 0.8125rem;
+	}
+}

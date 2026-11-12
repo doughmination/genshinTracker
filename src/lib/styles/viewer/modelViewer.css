@@ -1,0 +1,30 @@
+/* src/lib/styles/viewer/modelViewer.css
+ * MIT — (c) Doughmination System®
+ */
+
+.modelViewer {
+	/* Fills the stage, so the page never changes size */
+	position: absolute;
+	inset: 0;
+	touch-action: none;
+
+	&:fullscreen {
+		background-color: var(--bg);
+	}
+
+	.status {
+		position: absolute;
+		bottom: 0.75rem;
+		left: 0.75rem;
+		color: var(--muted);
+		font-size: 0.8rem;
+		pointer-events: none;
+	}
+
+	.fullscreenButton {
+		position: absolute;
+		right: 0.75rem;
+		bottom: 0.75rem;
+		background: var(--bg);
+	}
+}

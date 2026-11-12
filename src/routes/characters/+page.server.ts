@@ -1,0 +1,11 @@
+/* src/routes/characters/+page.server.ts
+ * MIT — (c) Doughmination System®
+ */
+
+import { getRoster } from '#lib/api/roster.js';
+
+import type { PageServerLoad } from './$types';
+
+export const load: PageServerLoad = async ({ fetch }) => {
+	return { roster: await getRoster(fetch) };
+};

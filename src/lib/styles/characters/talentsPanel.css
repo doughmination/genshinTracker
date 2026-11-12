@@ -1,0 +1,39 @@
+/* src/lib/styles/characters/talentsPanel.css
+ * MIT — (c) Doughmination System®
+ */
+
+.talentsPanel {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem 2rem;
+	margin: 0;
+
+	.talent {
+		display: flex;
+		align-items: center;
+		gap: 0.9rem;
+	}
+
+	/* Level inside a diamond */
+	dd {
+		display: grid;
+		place-items: center;
+		width: 2rem;
+		height: 2rem;
+		margin: 0.35rem;
+		border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+		background: var(--accent-dim);
+		transform: rotate(45deg);
+	}
+
+	dd span {
+		color: var(--accent);
+		font-weight: 600;
+		transform: rotate(-45deg);
+	}
+
+	dt {
+		color: var(--muted);
+		font-size: 0.85rem;
+	}
+}

@@ -1,0 +1,143 @@
+/* src/lib/styles/pages/characterDetail.css
+ * MIT — (c) Doughmination System®
+ */
+
+/* Featured card, tinted with the character's element */
+.characterHero {
+	display: grid;
+	grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+	align-items: center;
+	gap: 2rem;
+	padding: 1.5rem 2rem;
+	border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+	border-radius: 1rem;
+	background:
+		radial-gradient(
+			80% 120% at 0% 0%,
+			color-mix(in srgb, var(--accent) 12%, transparent),
+			transparent 70%
+		),
+		var(--raised);
+	box-shadow: 0 0 0 4px var(--accent-dim);
+
+	.eyebrow {
+		display: flex;
+		align-items: center;
+		gap: 0.6rem;
+		--iconSize: 2rem;
+	}
+
+	.heroLevel {
+		margin-top: 0.75rem;
+		font-size: 1.25rem;
+		font-weight: 500;
+	}
+
+	.friendship {
+		margin-left: 1rem;
+		color: var(--muted);
+		font-size: 0.85rem;
+		font-weight: 400;
+	}
+
+	.constellation {
+		display: flex;
+		align-items: center;
+		gap: 0.875rem;
+		margin-top: 0.5rem;
+		color: var(--muted);
+	}
+
+	.pips {
+		display: flex;
+		gap: 0.5rem;
+	}
+
+	/* Diamond, filled when unlocked */
+	.pip {
+		width: 0.625rem;
+		height: 0.625rem;
+		border: 1px solid var(--accent);
+		transform: rotate(45deg);
+	}
+
+	.pip.lit {
+		background: var(--accent);
+	}
+
+	.introPanel {
+		margin-top: 2rem;
+	}
+
+	/* Same size with artwork or model, so nothing jumps */
+	.stage {
+		position: relative;
+		height: min(34rem, 70vh);
+	}
+
+	/* Diamond frame behind the character, in the element colour */
+	.stage::before {
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: min(22rem, 62%);
+		aspect-ratio: 1;
+		border: 1px solid var(--accent);
+		opacity: 0.3;
+		transform: translate(-50%, -50%) rotate(45deg);
+	}
+
+	.art {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		/* Splash art is wide: fill the stage, then feather all four edges */
+		object-fit: cover;
+		/* Tall artwork keeps the head in frame */
+		object-position: 50% 12%;
+		mask-image:
+			linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent),
+			linear-gradient(transparent, #000 10%, #000 90%, transparent);
+		mask-composite: intersect;
+		transition: opacity 0.4s;
+	}
+
+	.art.hidden {
+		opacity: 0;
+	}
+}
+
+.characterBuild {
+	display: grid;
+	grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+	align-items: start;
+	gap: 0.75rem;
+	margin-top: 0.75rem;
+
+	.wide {
+		grid-column: 1 / -1;
+	}
+}
+
+.characterNotice {
+	margin-top: 0.75rem;
+	color: var(--muted);
+}
+
+@media (max-width: 48rem) {
+	.characterHero {
+		grid-template-columns: minmax(0, 1fr);
+		padding: 1.25rem;
+
+		.stage {
+			order: -1;
+			height: 22rem;
+		}
+	}
+
+	.characterBuild {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
