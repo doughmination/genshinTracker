@@ -5,3 +5,7 @@
 .rosterHead {
 	padding-block: 2rem;
 }
+
+.rosterEmpty {
+	color: var(--muted);
+}

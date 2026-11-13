@@ -1,0 +1,64 @@
+/* src/lib/styles/ui/toggle.css
+ * MIT — (c) Doughmination System®
+ */
+
+/* Sliding switch: a track with a thumb, then the label */
+.toggle {
+	display: inline-flex;
+	gap: 0.6rem;
+	align-items: center;
+	padding: 0;
+	border: 0;
+	background: none;
+	color: var(--muted);
+	font: inherit;
+	font-size: 0.9rem;
+	cursor: pointer;
+
+	.track {
+		flex: none;
+		width: 2.5rem;
+		height: 1.4rem;
+		padding: 2px;
+		border: 1px solid var(--line);
+		border-radius: 999px;
+		background: var(--raised);
+		transition:
+			background-color 0.15s ease,
+			border-color 0.15s ease;
+	}
+
+	.thumb {
+		display: block;
+		height: 100%;
+		aspect-ratio: 1;
+		border-radius: 50%;
+		background: var(--muted);
+		transition:
+			transform 0.15s ease,
+			background-color 0.15s ease;
+	}
+
+	&:hover {
+		color: var(--text);
+	}
+
+	&:hover .track {
+		border-color: var(--accent);
+	}
+
+	&[aria-checked='true'] {
+		color: var(--text);
+	}
+
+	&[aria-checked='true'] .track {
+		border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+		background: var(--accent-dim);
+	}
+
+	/* Track is 2.5rem wide, thumb slides the remaining 1.1rem */
+	&[aria-checked='true'] .thumb {
+		background: var(--accent);
+		transform: translateX(1.1rem);
+	}
+}

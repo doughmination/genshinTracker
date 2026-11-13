@@ -7,9 +7,14 @@
 
 	import CharacterCard from '#lib/components/characters/CharacterCard.svelte';
 	import Meta from '#lib/components/Meta.svelte';
-	import { sortRoster } from '#lib/scripts/roster.js';
+	import RosterFilters from '#lib/components/characters/RosterFilters.svelte';
+	import { applyRosterFilters, defaultRosterFilters } from '#lib/scripts/rosterFilters.js';
 
 	let { data }: PageProps = $props();
+
+	let filters = $state(defaultRosterFilters());
+
+	const shown = $derived(applyRosterFilters(data.roster.characters, filters));
 </script>
 
 <Meta title="Characters · Genshin Tracker" description="Every character on Clove's account." />
@@ -24,12 +29,16 @@
 	</p>
 </section>
 
-<!-- TODO: search, filters, sorting -->
+<RosterFilters bind:filters />
+
+<p class="eyebrow" aria-live="polite">
+	Showing {shown.length} of {data.roster.total_count}
+</p>
 
 <div class="cardGrid">
-	{#each sortRoster(data.roster.characters) as character (character.id)}
+	{#each shown as character (character.id)}
 		<CharacterCard {character} />
 	{:else}
-		<p>Nothing to show yet.</p>
+		<p class="rosterEmpty">No characters match.</p>
 	{/each}
 </div>

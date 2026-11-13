@@ -1,0 +1,75 @@
+/* src/lib/styles/characters/rosterFilters.css
+ * MIT — (c) Doughmination System®
+ */
+
+.rosterFilters {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+	margin-bottom: 1.5rem;
+
+	.filterRow {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem 1.5rem;
+		align-items: center;
+	}
+
+	.filterGroup {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.4rem;
+	}
+
+	.searchBox {
+		flex: 1 1 14rem;
+	}
+
+	input,
+	select {
+		border: 1px solid var(--line);
+		border-radius: 999px;
+		background: var(--raised);
+		color: var(--text);
+		font: inherit;
+		font-size: 0.9rem;
+	}
+
+	input {
+		width: 100%;
+		padding: 0.5rem 1rem;
+	}
+
+	input::placeholder {
+		color: var(--muted);
+	}
+
+	input:hover,
+	select:hover {
+		border-color: var(--accent);
+	}
+
+	.sortBox {
+		display: flex;
+		gap: 0.6rem;
+		align-items: center;
+	}
+
+	select {
+		padding: 0.5rem 0.9rem;
+	}
+
+	/* The dropdown list is drawn by the browser, so it needs a solid colour */
+	option {
+		background: var(--bg);
+	}
+
+	/* Element symbol, then the name */
+	.elementButton {
+		display: inline-flex;
+		gap: 0.4rem;
+		align-items: center;
+		padding-left: 0.4rem;
+		--iconSize: 1.25rem;
+	}
+}

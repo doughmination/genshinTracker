@@ -3,6 +3,7 @@
 -->
 
 <script lang="ts">
+	import Toggle from '#lib/components/ui/Toggle.svelte';
 	import {
 		canUseModels,
 		modelPreference,
@@ -11,12 +12,9 @@
 </script>
 
 {#if canUseModels()}
-	<button
-		class="button"
-		type="button"
-		aria-pressed={modelPreference.choice === 'on'}
-		onclick={toggleModelChoice}
-	>
-		3D models: {modelPreference.choice === 'on' ? 'On' : 'Off'}
-	</button>
+	<Toggle
+		checked={modelPreference.choice === 'on'}
+		label="3D models"
+		ontoggle={toggleModelChoice}
+	/>
 {/if}
