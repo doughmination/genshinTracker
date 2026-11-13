@@ -104,7 +104,7 @@ export type ArtifactSet = {
 	count: number;
 };
 
-// Untracked characters come back with talents null, weapon null and empty lists
+// tracked false with a build means it is the last one seen before leaving the showcase
 export type CharacterDetail = {
 	id: string;
 	name: string;
@@ -124,4 +124,6 @@ export type CharacterDetail = {
 	weapon: Weapon | null;
 	artifacts: Artifact[];
 	sets: ArtifactSet[];
+	// When the build was stored, null when none was ever seen
+	build_saved_at: number | null;
 };

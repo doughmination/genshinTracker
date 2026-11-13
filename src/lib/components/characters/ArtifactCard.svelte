@@ -3,11 +3,13 @@
 -->
 
 <script lang="ts">
-	import { slotLabels } from '#lib/scripts/build.js';
+	import { critValue, slotLabels } from '#lib/scripts/build.js';
 	import { formatStat } from '#lib/scripts/format.js';
 	import type { Artifact } from '#lib/types/api.js';
 
 	let { artifact }: { artifact: Artifact } = $props();
+
+	const cardCritValue = $derived(critValue(artifact.sub_stats));
 </script>
 
 <li class="itemCard" data-rarity={artifact.rarity}>
@@ -20,7 +22,15 @@
 	</div>
 
 	<div class="body">
-		<p class="levelTag">+{artifact.level}</p>
+		<p class="tags">
+			<span class="levelTag">+{artifact.level}</span>
+
+			{#if cardCritValue > 0}
+				<span class="critTag" title="Crit Value: CRIT Rate × 2 + CRIT DMG">
+					CV {cardCritValue.toFixed(1)}
+				</span>
+			{/if}
+		</p>
 
 		<ul class="subStats">
 			{#each artifact.sub_stats as subStat (subStat.name)}

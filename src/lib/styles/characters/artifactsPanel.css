@@ -10,12 +10,30 @@
 		list-style: none;
 	}
 
+	/* Set names on the left, total Crit Value on the right */
+	.summary {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem 2rem;
+		align-items: baseline;
+		justify-content: space-between;
+		margin-bottom: 1rem;
+	}
+
 	.sets {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 0.25rem 2rem;
-		margin-bottom: 1rem;
 		font-weight: 500;
+	}
+
+	.critTotal {
+		display: flex;
+		gap: 0.6rem;
+		align-items: baseline;
+		font-size: 1.25rem;
+		font-weight: 600;
+		font-variant-numeric: tabular-nums;
 	}
 
 	.count {

@@ -18,7 +18,12 @@ export type MetaInput = {
 	description: string;
 	pageUrl: string;
 	isHome: boolean;
+	// Absolute PNG link shown beside the embed
+	imageUrl: string;
 };
+
+// Embeds need a PNG, they do not accept SVG
+export const defaultImageUrl = websiteUrl + '/favicon.png';
 
 // Discord embed accent
 const accentColour = 0xeb459e;
@@ -29,7 +34,13 @@ const toJson = (data: unknown) => JSON.stringify(data).replace(/</g, '\\u003c');
 const closingTag = '</' + 'script>';
 
 // Discord component embed: one Container, max 3,000 bytes, Open Graph tags are the fallback
-export function buildEmbedTag({ title, description, pageUrl, isHome }: MetaInput): string {
+export function buildEmbedTag({
+	title,
+	description,
+	pageUrl,
+	isHome,
+	imageUrl
+}: MetaInput): string {
 	// Link buttons: this page, plus Home when we're not already on it
 	const buttons = [
 		{
@@ -69,7 +80,7 @@ export function buildEmbedTag({ title, description, pageUrl, isHome }: MetaInput
 					],
 					accessory: {
 						type: 11,
-						media: { url: websiteUrl + '/favicon.png' }
+						media: { url: imageUrl }
 					}
 				},
 				{ type: 14 },

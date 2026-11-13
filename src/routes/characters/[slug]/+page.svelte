@@ -13,7 +13,7 @@
 	import ElementIcon from '#lib/components/ui/ElementIcon.svelte';
 	import ModelPrompt from '#lib/components/viewer/ModelPrompt.svelte';
 	import type ModelViewer from '#lib/components/viewer/ModelViewer.svelte';
-	import { constellationSlots } from '#lib/scripts/build.js';
+	import { constellationSlots, formatDate, hasBuild } from '#lib/scripts/build.js';
 	import { elementLabel } from '#lib/scripts/format.js';
 	import { shouldAskAboutModels, wantsModels } from '#lib/scripts/modelPreference.svelte.js';
 	import { loadModelViewer, modelUrl } from '#lib/scripts/viewer.js';
@@ -43,6 +43,7 @@
 <Meta
 	title={`${character.name} · Genshin Tracker`}
 	description={`${character.name} on Clove's Genshin Impact account.`}
+	image={character.icon_url}
 />
 
 <article class="characterHero" data-element={character.element}>
@@ -108,7 +109,15 @@
 	</div>
 </article>
 
-{#if character.tracked}
+{#if hasBuild(character)}
+	{#if !character.tracked && character.build_saved_at}
+		<p class="characterNotice card">
+			Not in the showcase right now. This is the build saved on {formatDate(
+				character.build_saved_at
+			)}.
+		</p>
+	{/if}
+
 	<div class="characterBuild" data-element={character.element}>
 		{#if character.stats.length > 0}
 			<StatsPanel stats={character.stats} />

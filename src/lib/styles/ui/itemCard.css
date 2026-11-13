@@ -72,6 +72,19 @@
 		font-variant-numeric: tabular-nums;
 	}
 
+	.tags {
+		display: flex;
+		justify-content: space-between;
+		gap: 0.5rem;
+	}
+
+	/* Crit Value of this piece */
+	.critTag {
+		font-size: 0.8125rem;
+		font-weight: 600;
+		font-variant-numeric: tabular-nums;
+	}
+
 	.subStats {
 		margin: 0.5rem 0 0;
 		padding: 0;
